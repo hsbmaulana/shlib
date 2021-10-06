@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ "$*" ]
+then
+    requirements=
+
+    for requirement in "$@"
+    do
+        if ! type "$requirement"
+        then
+            requirements="$requirements $requirement"
+        fi
+    done
+
+    if [ "$requirements" ]
+    then
+        echo $requirements 1> /dev/stderr
+        exit 1
+    fi
+fi
