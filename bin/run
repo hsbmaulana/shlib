@@ -6,7 +6,7 @@ then
 
     for requirement in "$@"
     do
-        if ! type "$requirement"
+        if [ ! "$(which $requirement)" ]
         then
             requirements="$requirements $requirement"
         fi
